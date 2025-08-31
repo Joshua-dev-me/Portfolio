@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>API Endpoint Test</h1>
+    <button onclick="testProfile()">Test Profile API</button>
+    <button onclick="testSkills()">Test Skills API</button>
+    <div id="results"></div>
+
+    <script>
+        const API_BASE = 'http://localhost:3001';
+        
+        async function testProfile() {
+            try {
+                const response = await fetch(`${API_BASE}/api/profile`);
+                const data = await response.json();
+                document.getElementById('results').innerHTML = `
+                    <h3>Profile API Response:</h3>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('results').innerHTML = `
+                    <h3>Profile API Error:</h3>
+                    <pre>${error.message}</pre>
+                `;
+            }
+        }
+        
+        async function testSkills() {
+            try {
+                const response = await fetch(`${API_BASE}/api/skills`);
+                const data = await response.json();
+                document.getElementById('results').innerHTML = `
+                    <h3>Skills API Response:</h3>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('results').innerHTML = `
+                    <h3>Skills API Error:</h3>
+                    <pre>${error.message}</pre>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
