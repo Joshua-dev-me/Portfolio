@@ -19,7 +19,7 @@ services:
       - key: DB_NAME
         sync: false
       - key: DB_PORT
-        value: 3306
+        value: 5432
       - key: CORS_ORIGIN
         value: "*"
       - key: RATE_LIMIT_WINDOW_MS
