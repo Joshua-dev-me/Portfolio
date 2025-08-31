@@ -83,6 +83,8 @@ A comprehensive candidate profile API playground that stores and serves informat
 - Node.js (v16 or higher)
 - npm or yarn
 
+## 🚀 Deployment
+
 ### Local Development
 
 1. **Clone the repository**
@@ -116,7 +118,7 @@ A comprehensive candidate profile API playground that stores and serves informat
    - API Health: http://localhost:3001/health
    - API Base: http://localhost:3001/api
 
-### Production Deployment
+### Local Production
 
 1. **Set environment variables**
    ```bash
@@ -139,6 +141,81 @@ A comprehensive candidate profile API playground that stores and serves informat
    ```bash
    npm start
    ```
+
+### 🚀 Cloud Deployment
+
+#### Deploy to Render
+
+1. **Fork/Clone your GitHub repository to Render**
+   - Go to [render.com](https://render.com)
+   - Sign up/Login with GitHub
+   - Click "New +" → "Web Service"
+   - Connect your GitHub repository
+
+2. **Configure the service**
+   - **Name**: `me-api-playground` (or your preferred name)
+   - **Environment**: `Node`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+   - **Plan**: Free (or paid if needed)
+
+3. **Set Environment Variables**
+   ```
+   NODE_ENV=production
+   PORT=10000
+   DB_HOST=your-production-db-host
+   DB_USER=your-production-db-user
+   DB_PASSWORD=your-production-db-password
+   DB_NAME=your-production-db-name
+   DB_PORT=3306
+   CORS_ORIGIN=*
+   RATE_LIMIT_WINDOW_MS=900000
+   RATE_LIMIT_MAX_REQUESTS=100
+   ```
+
+4. **Deploy**
+   - Click "Create Web Service"
+   - Render will automatically build and deploy your app
+   - Your app will be available at: `https://your-app-name.onrender.com`
+
+#### Deploy to Vercel
+
+1. **Install Vercel CLI**
+   ```bash
+   npm i -g vercel
+   ```
+
+2. **Deploy from your project directory**
+   ```bash
+   vercel
+   ```
+
+3. **Follow the prompts**
+   - Link to existing project or create new
+   - Set project name
+   - Confirm deployment settings
+
+4. **Set Environment Variables in Vercel Dashboard**
+   - Go to your project dashboard
+   - Navigate to Settings → Environment Variables
+   - Add the same variables as above
+
+5. **Your app will be available at**: `https://your-app-name.vercel.app`
+
+#### Database Setup for Production
+
+**Option 1: Use Render's MySQL Service**
+- Create a new MySQL service in Render
+- Use the connection details in your environment variables
+
+**Option 2: Use External MySQL Service**
+- [PlanetScale](https://planetscale.com) (Free tier available)
+- [Railway](https://railway.app) (Free tier available)
+- [Clever Cloud](https://clever-cloud.com) (Free tier available)
+
+**Option 3: Use SQLite (Not recommended for production)**
+- Update `database/db.js` to use SQLite
+- Note: SQLite files are not persistent on most cloud platforms
 
 ## 📡 API Endpoints
 
